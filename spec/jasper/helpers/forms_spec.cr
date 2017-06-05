@@ -22,14 +22,18 @@ describe Jasper::Helpers::Forms do
   end
 
   describe "#form_tag" do
-    result = form_tag(id: "myForm") do
-      text_field_tag(id: "my-great-text-input")
-    end
+    it "allows for nested input fields" do
+      result = form_tag(id: "myForm") do
+        text_field_tag(id: "my-great-text-input")
+      end
 
-    result.should eq("<form id=\"myForm\"><input type=\"text\" id=\"my-great-text-input\"/></form>")
+      result.should eq("<form id=\"myForm\"><input type=\"text\" id=\"my-great-text-input\"/></form>")
+    end
   end
 
   describe "#hidden_field_tag" do
-    hidden_field_tag(id: "my-hidden-field").should eq("<input type=\"hidden\" id=\"my-hidden-field\"/>")
+    it "creates a hidden field" do
+      hidden_field_tag(id: "my-hidden-field").should eq("<input type=\"hidden\" id=\"my-hidden-field\"/>")
+    end
   end
 end
