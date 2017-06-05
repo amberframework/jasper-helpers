@@ -61,4 +61,18 @@ describe Jasper::Helpers::Forms do
     end
   end
 
+  describe "#submit_tag" do
+    it "creates a submit_tag with no parameters" do
+      submit_tag.should eq("<input type=\"submit\" value=\"Save changes\"/>")
+    end
+
+    it "creates a submit_tag with value parameter" do
+      submit_tag(value: "Create").should eq("<input type=\"submit\" value=\"Create\"/>")
+    end
+
+    it "creates a submit_tag with value and id parameters" do
+      submit_tag(value: "Create", id: "my-submit-tag").should eq("<input type=\"submit\" value=\"Create\" id=\"my-submit-tag\"/>")
+    end
+  end
+
 end

@@ -49,4 +49,16 @@ module Jasper::Helpers::Forms
     end
   end
 
+  def submit_tag(**options : Object)
+    options = options.to_h
+
+    input_field_tag(type: :submit, options: options)
+  end
+
+  def submit_tag(value = "Save changes")
+    options = { :value => value }
+
+    input_field_tag(type: :submit, options: options)
+  end
+
 end
