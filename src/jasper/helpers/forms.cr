@@ -36,4 +36,10 @@ module Jasper::Helpers::Forms
     end
   end
 
+  def text_area_tag(content : String, **options)
+    content_tag(name: :textarea, options: options.to_h) do
+      content
+    end
+  end
+
 end

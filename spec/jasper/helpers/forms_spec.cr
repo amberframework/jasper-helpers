@@ -46,4 +46,11 @@ describe Jasper::Helpers::Forms do
       select_tag(id: "my-select-field", collection: ["A", "B"]).should eq("<select id=\"my-select-field\"><option>A</option><option>B</option></select>")
     end
   end
+
+  describe "#text_area_tag" do
+    it "creates a text_area_tag" do
+      text_area_tag(id: "my-textarea", content: "My Great Textarea").should eq("<textarea id=\"my-textarea\">My Great Textarea</textarea>")
+    end
+  end
+
 end
