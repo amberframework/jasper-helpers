@@ -36,4 +36,14 @@ describe Jasper::Helpers::Forms do
       hidden_field_tag(id: "my-hidden-field").should eq("<input type=\"hidden\" id=\"my-hidden-field\"/>")
     end
   end
+
+  describe "#select_tag" do
+    it "creates a select_tag with two dimension arrays" do
+      select_tag(id: "my-select-field", collection: [[1, "A"],[2, "B"]]).should eq("<select id=\"my-select-field\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
+    end
+
+    it "creates a select_tag with single dimension array" do
+      select_tag(id: "my-select-field", collection: ["A", "B"]).should eq("<select id=\"my-select-field\"><option>A</option><option>B</option></select>")
+    end
+  end
 end

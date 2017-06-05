@@ -22,10 +22,9 @@ module Jasper::Helpers::Tags
   end
 
   def content_tag(name : Symbol, content : String, options : Hash(String | Symbol, String | Bool | Symbol) )
-    options = options.map { |k, v| "#{k}=\"#{v}\"" }.join(" ")
-    options = " #{options}" if !options.blank?
-
-    "<#{name}#{options}>#{content}</#{name}>"
+    content_tag(name: name, options: options) do
+      content
+    end
   end
 
   def content_tag(name : Symbol, options : Hash(String | Symbol, String | Bool | Symbol), &block)

@@ -24,4 +24,16 @@ module Jasper::Helpers::Forms
     input_field_tag(type: :hidden, options: options)
   end
 
+  def select_tag(collection : Array(Array), **options)
+    content_tag(name: :select, options: options.to_h) do
+      collection.map{ |item| "<option value=\"#{item[0]}\">#{item[1]}</option>"}.join("")
+    end
+  end
+
+  def select_tag(collection : Array, **options)
+    content_tag(name: :select, options: options.to_h) do
+      collection.map{ |item| "<option>#{item}</option>"}.join("")
+    end
+  end
+
 end
