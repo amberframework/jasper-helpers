@@ -6,12 +6,8 @@ module Jasper::Helpers::Forms
     input_field_tag(type: :text, options: options)
   end
 
-  def label_tag(**options)
+  def label_tag(content : String, **options)
     options = options.to_h
-
-    content = options[:content]
-
-    options.reject!([:content])
 
     content_tag(name: :label, content: content, options: options)
   end
