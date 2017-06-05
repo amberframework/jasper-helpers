@@ -16,4 +16,10 @@ module Jasper::Helpers::Forms
     content_tag(name: :label, content: content, options: options)
   end
 
+  def form_tag(**options, &block)
+    content_tag(name: :form, options: options.to_h) do
+      yield
+    end
+  end
+
 end

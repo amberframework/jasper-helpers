@@ -20,4 +20,12 @@ describe Jasper::Helpers::Forms do
       label_tag(for: "my-great-text-input", content: "My Label", class: "label").should eq("<label for=\"my-great-text-input\" class=\"label\">My Label</label>")
     end
   end
+
+  describe "#form_tag" do
+    result = form_tag(id: "myForm") do
+      text_field_tag(id: "my-great-text-input")
+    end
+
+    result.should eq("<form id=\"myForm\"><input type=\"text\" id=\"my-great-text-input\"></form>")
+  end
 end
