@@ -30,6 +30,12 @@ module Jasper::Helpers::Forms
     end
   end
 
+  def select_tag(collection : Array(Hash), **options)
+    content_tag(name: :select, options: options.to_h) do
+      collection.map{ |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>"}.join("")
+    end
+  end
+
   def select_tag(collection : Array, **options)
     content_tag(name: :select, options: options.to_h) do
       collection.map{ |item| "<option>#{item}</option>"}.join("")

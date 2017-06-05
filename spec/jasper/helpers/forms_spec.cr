@@ -42,11 +42,15 @@ describe Jasper::Helpers::Forms do
       select_tag(id: "my-select-field", collection: [[1, "A"],[2, "B"]]).should eq("<select id=\"my-select-field\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
     end
 
+    it "creates a select_tag with array of hashes" do
+      select_tag(id: "my-select-field", collection: [ {:"1" => "A"}, {:"2" => "B"}] ).should eq("<select id=\"my-select-field\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
+    end
+
     it "creates a select_tag with single dimension array" do
       select_tag(id: "my-select-field", collection: ["A", "B"]).should eq("<select id=\"my-select-field\"><option>A</option><option>B</option></select>")
     end
 
-    it "creates a select_tag with single dimension array" do
+    it "creates a select_tag with range" do
       select_tag(id: "my-select-field", range: 1..5).should eq("<select id=\"my-select-field\"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>")
     end
   end
