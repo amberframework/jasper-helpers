@@ -75,4 +75,10 @@ describe Jasper::Helpers::Forms do
     end
   end
 
+  describe "#check_box_tag" do
+    it "creates a check_box_tag with only value" do
+      check_box_tag(value: "yes").should eq( "<input type=\"checkbox\" value=\"yes\" checked=\"false\"/>")
+    end
+  end
+
 end

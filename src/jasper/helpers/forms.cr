@@ -61,4 +61,19 @@ module Jasper::Helpers::Forms
     input_field_tag(type: :submit, options: options)
   end
 
+  def check_box_tag(value = "1", checked = false, **options : Object)
+    options = options.to_h
+
+    options[:value] = value
+    options[:checked] = checked
+
+    input_field_tag(type: :checkbox, options: options)
+  end
+
+  def check_box_tag(value = "1", checked = false)
+    options = {:value => value, :checked => checked}
+
+    input_field_tag(type: :checkbox, options: options)
+  end
+
 end
