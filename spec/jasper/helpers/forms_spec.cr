@@ -55,6 +55,10 @@ describe Jasper::Helpers::Forms do
     it "allows for rows and cols to be specified" do
       text_area_tag(id: "my-textarea", content: "My Great Textarea", cols: 5, rows: 10).should eq("<textarea id=\"my-textarea\" cols=\"5\" rows=\"10\">My Great Textarea</textarea>")
     end
+
+    it "allows for size to be specified" do
+      text_area_tag(id: "my-textarea", content: "My Great Textarea", size: "5x10").should eq("<textarea id=\"my-textarea\" cols=\"5\" rows=\"10\">My Great Textarea</textarea>")
+    end
   end
 
 end

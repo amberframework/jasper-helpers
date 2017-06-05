@@ -37,6 +37,13 @@ module Jasper::Helpers::Forms
   end
 
   def text_area_tag(content : String, **options)
+    options = options.to_h
+
+    if options.has_key?(:size) # cols by rows
+      options[:cols], options[:rows] = options[:size].to_s.split("x")
+      options.reject!(:size)
+    end
+
     content_tag(name: :textarea, options: options.to_h) do
       content
     end
