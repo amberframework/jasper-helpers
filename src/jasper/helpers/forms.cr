@@ -36,6 +36,14 @@ module Jasper::Helpers::Forms
     end
   end
 
+  def select_tag(range : Range, **options)
+    collection = range.to_a
+
+    content_tag(name: :select, options: options.to_h) do
+      collection.map{ |item| "<option>#{item}</option>"}.join("")
+    end
+  end
+
   def text_area_tag(content : String, **options)
     options = options.to_h
 
