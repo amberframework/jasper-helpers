@@ -18,4 +18,10 @@ module Jasper::Helpers::Forms
     end
   end
 
+  def hidden_field_tag(**options)
+    options = options.to_h
+
+    input_field_tag(type: :hidden, options: options)
+  end
+
 end

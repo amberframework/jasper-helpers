@@ -3,11 +3,11 @@ require "../../spec_helper"
 describe Jasper::Helpers::Forms do
   describe "#text_field_tag" do
     it "id value works" do
-      text_field_tag(id: "my-great-text-input").should eq("<input type=\"text\" id=\"my-great-text-input\">")
+      text_field_tag(id: "my-great-text-input").should eq("<input type=\"text\" id=\"my-great-text-input\"/>")
     end
 
     it "style value works" do
-      text_field_tag(style: "color: white;").should eq("<input type=\"text\" style=\"color: white;\">")
+      text_field_tag(style: "color: white;").should eq("<input type=\"text\" style=\"color: white;\"/>")
     end
   end
 
@@ -26,6 +26,10 @@ describe Jasper::Helpers::Forms do
       text_field_tag(id: "my-great-text-input")
     end
 
-    result.should eq("<form id=\"myForm\"><input type=\"text\" id=\"my-great-text-input\"></form>")
+    result.should eq("<form id=\"myForm\"><input type=\"text\" id=\"my-great-text-input\"/></form>")
+  end
+
+  describe "#hidden_field_tag" do
+    hidden_field_tag(id: "my-hidden-field").should eq("<input type=\"hidden\" id=\"my-hidden-field\"/>")
   end
 end

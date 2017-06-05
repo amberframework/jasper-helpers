@@ -18,7 +18,7 @@ module Jasper::Helpers::Tags
     tag_options = tag_options << boolean_options.keys.join(" ") if !boolean_options.empty?
     tag_options = tag_options.join(" ")
 
-    "<input type=\"#{type}\" #{tag_options}>"
+    "<input type=\"#{type}\" #{tag_options}/>"
   end
 
   def content_tag(name : Symbol, content : String, options : Hash(String | Symbol, String | Bool | Symbol) )
