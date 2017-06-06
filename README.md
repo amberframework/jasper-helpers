@@ -1,4 +1,5 @@
-# Jasper Helpers
+[![Build Status](https://travis-ci.org/Amber-Crystal/Jasper-Helpers.svg?branch=master)](https://travis-ci.org/Amber-Crystal/Jasper-Helpers)
+# Jasper::Helpers
 
 TODO: Write a description here
 
