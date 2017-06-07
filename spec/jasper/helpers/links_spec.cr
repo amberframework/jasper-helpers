@@ -21,11 +21,11 @@ describe Jasper::Helpers::Links do
 
   describe "#button_to" do
     it "works with body and url provided" do
-      button_to("Save", "/save").should eq("<form action=\"/save\" class=\"button\" method=\"get\"><button type=\"submit\">Save</button></form>")
+      button_to("Save", "/save").should eq("<form action=\"/save\" class=\"button\" method=\"post\"><button type=\"submit\">Save</button></form>")
     end
 
     it "changes the method when provided" do
-      button_to("Save", "/save", :put).should eq("<form action=\"/save\" class=\"button\" method=\"put\"><button type=\"submit\">Save</button></form>")
+      button_to("Save", "/save", :put).should eq("<form action=\"/save\" class=\"button\" method=\"post\"><input type=\"hidden\" type=\"_method\" value=\"put\"/><button type=\"submit\">Save</button></form>")
     end
   end
 end

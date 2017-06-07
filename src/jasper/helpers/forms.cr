@@ -40,12 +40,13 @@ module Jasper::Helpers::Forms
   def form(**options : Object, method = :post, &block)
     options = options.to_h
 
-    # method
+    options.delete(:method)
 
-    content(name: :form, options: options.to_h) do
-      hidden_field(type: "_method", value: method ) #if method != :post
-
-      yield
+    content(name: :form, options: options.merge({:method => :post})) do
+       String.build do |str|
+         str << hidden_field(type: "_method", value: method ) if method != :post
+         str << yield
+      end
     end
   end
 
