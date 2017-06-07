@@ -37,8 +37,14 @@ module Jasper::Helpers::Forms
   end
 
   # form
-  def form(**options, &block)
+  def form(**options : Object, method = :post, &block)
+    options = options.to_h
+
+    # method
+
     content(name: :form, options: options.to_h) do
+      hidden_field(type: "_method", value: method ) #if method != :post
+
       yield
     end
   end
