@@ -1,5 +1,4 @@
 module Jasper::Helpers::Forms
-
   # text_field
   def text_field(**options : Object)
     options = options.to_h
@@ -37,15 +36,15 @@ module Jasper::Helpers::Forms
   end
 
   # form
-  def form(**options : Object, method = :post, &block)
+  def form(method = :post, **options : Object, &block)
     options = options.to_h
 
-    options.delete(:method)
+    options[:method] = "post"
 
-    content(name: :form, options: options.merge({:method => :post})) do
-       String.build do |str|
-         str << hidden_field(type: "_method", value: method ) if method != :post
-         str << yield
+    content(name: :form, options: options) do
+      String.build do |str|
+        str << hidden_field(type: "_method", value: method) if method != :post
+        str << yield
       end
     end
   end
@@ -71,39 +70,39 @@ module Jasper::Helpers::Forms
   # with collection Array(Array)
   def select_field(name : String | Symbol, collection : Array(Array), **options : Object)
     content(name: :select, options: options.to_h) do
-      collection.map{ |item| "<option value=\"#{item[0]}\">#{item[1]}</option>"}.join("")
+      collection.map { |item| "<option value=\"#{item[0]}\">#{item[1]}</option>" }.join("")
     end
   end
 
   def select_field(name : String | Symbol, collection : Array(Array))
     content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |item| "<option value=\"#{item[0]}\">#{item[1]}</option>"}.join("")
+      collection.map { |item| "<option value=\"#{item[0]}\">#{item[1]}</option>" }.join("")
     end
   end
 
   # with collection Array(Hash)
   def select_field(name : String | Symbol, collection : Array(Hash), **options : Object)
     content(name: :select, options: options.to_h) do
-      collection.map{ |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>"}.join("")
+      collection.map { |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>" }.join("")
     end
   end
 
   def select_field(name : String | Symbol, collection : Array(Hash))
     content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>"}.join("")
+      collection.map { |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>" }.join("")
     end
   end
 
   # with collection Array
   def select_field(name : String | Symbol, collection : Array, **options : Object)
     content(name: :select, options: options.to_h) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
+      collection.map { |item| "<option>#{item}</option>" }.join("")
     end
   end
 
   def select_field(name : String | Symbol, collection : Array)
     content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
+      collection.map { |item| "<option>#{item}</option>" }.join("")
     end
   end
 
@@ -112,7 +111,7 @@ module Jasper::Helpers::Forms
     collection = range.to_a
 
     content(name: :select, options: options.to_h) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
+      collection.map { |item| "<option>#{item}</option>" }.join("")
     end
   end
 
@@ -120,7 +119,7 @@ module Jasper::Helpers::Forms
     collection = range.to_a
 
     content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
+      collection.map { |item| "<option>#{item}</option>" }.join("")
     end
   end
 
@@ -164,7 +163,7 @@ module Jasper::Helpers::Forms
   end
 
   def submit(value = "Save changes")
-    options = { :value => value.to_s.capitalize }
+    options = {:value => value.to_s.capitalize}
 
     input_field(type: :submit, options: options)
   end
@@ -184,5 +183,4 @@ module Jasper::Helpers::Forms
 
     input_field(type: :checkbox, options: options)
   end
-
 end
