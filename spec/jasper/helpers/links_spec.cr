@@ -2,7 +2,6 @@ require "../../spec_helper"
 
 describe Jasper::Helpers::Links do
   describe "#link_to" do
-
     it "works with body and url provided" do
       link_to("Save", "/save").should eq("<a href=\"/save\">Save</a>")
     end
@@ -29,5 +28,4 @@ describe Jasper::Helpers::Links do
       button_to("Save", "/save", :put).should eq("<form action=\"/save\" class=\"button\" method=\"put\"><button type=\"submit\">Save</button></form>")
     end
   end
-
 end

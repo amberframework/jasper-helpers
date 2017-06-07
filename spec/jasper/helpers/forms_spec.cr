@@ -96,5 +96,4 @@ describe Jasper::Helpers::Forms do
       check_box(:allowed, value: "yes").should eq( "<input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\" checked=\"false\"/>")
     end
   end
-
 end
