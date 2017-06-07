@@ -17,7 +17,7 @@ TODO: Write development instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/elorest/form_helpers/fork )
+1. Fork it ( https://github.com/Amber-Crystal/Jasper-Helpers/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -26,3 +26,4 @@ TODO: Write development instructions here
 ## Contributors
 
 - [elorest](https://github.com/elorest) Isaac Sloan - creator, maintainer
+- [skunkworker](https://github.com/skunkworker) John Bolliger - contributer, maintainer

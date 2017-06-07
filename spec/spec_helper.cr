@@ -1,2 +1,5 @@
 require "spec"
-require "../src/form_helpers"
+require "../src/jasper/helpers/**"
+
+include Jasper::Helpers::Tags
+include Jasper::Helpers::Forms
