@@ -1,4 +1,5 @@
 module Jasper::Helpers::Forms
+
   # text_field
   def text_field(**options : Object)
     options = options.to_h
@@ -35,6 +36,10 @@ module Jasper::Helpers::Forms
     content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"})
   end
 
+  def csrf_field
+    hidden_field(name: "authenticity_token", value: "")
+  end
+
   # form
   def form(method = :post, **options : Object, &block)
     options = options.to_h
@@ -44,6 +49,7 @@ module Jasper::Helpers::Forms
     content(name: :form, options: options) do
       String.build do |str|
         str << hidden_field(type: "_method", value: method) if method != :post
+        str << csrf_field
         str << yield
       end
     end
