@@ -25,5 +25,5 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [elorest](https://github.com/elorest) Isaac Sloan - creator, maintainer
-- [skunkworker](https://github.com/skunkworker) John Bolliger - contributer, maintainer
+- [elorest](https://github.com/elorest) Isaac Sloan - <aintainer
+- [skunkworker](https://github.com/skunkworker) John Bolliger Maintainer
