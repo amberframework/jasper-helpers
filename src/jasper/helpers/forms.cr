@@ -1,5 +1,4 @@
 module Jasper::Helpers::Forms
-
   # text_field
   def text_field(**options : Object)
     options = options.to_h
@@ -23,36 +22,46 @@ module Jasper::Helpers::Forms
     name = options[:name]
     content = options[:content]
 
-    content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"}.merge(options))
+    content(element_name: :label, content: content, options: {:for => name, :id => "#{name}_label"}.merge(options))
   end
 
   def label(name : String | Symbol, content : String, **options : Object)
     options = options.to_h
 
-    content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"}.merge(options))
+    content(element_name: :label, content: content, options: {:for => name, :id => "#{name}_label"}.merge(options))
   end
 
   def label(name : String | Symbol, content : String)
-    content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"})
+    content(element_name: :label, content: content, options: {:for => name, :id => "#{name}_label"})
+  end
+
+  def csrf_field
+    hidden_field(name: "authenticity_token", value: "")
   end
 
   # form
-  def form(**options, &block)
-    content(name: :form, options: options.to_h) do
-      yield
+  def form(method = :post, **options : Object, &block)
+    options = options.to_h
+
+    options[:method] = "post"
+
+    content(element_name: :form, options: options) do
+      String.build do |str|
+        str << hidden_field(type: "_method", value: method) if method != :post
+        str << csrf_field
+        str << yield
+      end
     end
   end
 
   # hidden_field
   def hidden_field(**options : Object)
     options = options.to_h
-
     input_field(type: :hidden, options: options)
   end
 
   def hidden_field(name : String | Symbol, **options : Object)
     options = options.to_h
-
     input_field(type: :text, options: {:name => name, :id => name}.merge(options))
   end
 
@@ -63,58 +72,32 @@ module Jasper::Helpers::Forms
   # select_field
   # with collection Array(Array)
   def select_field(name : String | Symbol, collection : Array(Array), **options : Object)
-    content(name: :select, options: options.to_h) do
-      collection.map{ |item| "<option value=\"#{item[0]}\">#{item[1]}</option>"}.join("")
+    content(element_name: :select, options: options.to_h.merge({:name => name})) do
+      collection.map { |item| "<option value=\"#{item[0]}\">#{item[1]}</option>" }.join("")
     end
   end
 
+  # Utilizes method above for when options are not defined and sets class and id.
   def select_field(name : String | Symbol, collection : Array(Array))
-    content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |item| "<option value=\"#{item[0]}\">#{item[1]}</option>"}.join("")
-    end
+    select_field(name, collection, class: name, id: name)
   end
 
   # with collection Array(Hash)
   def select_field(name : String | Symbol, collection : Array(Hash), **options : Object)
-    content(name: :select, options: options.to_h) do
-      collection.map{ |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>"}.join("")
-    end
+    select_field(name, collection.map(&.first.to_a), **options)
   end
 
   def select_field(name : String | Symbol, collection : Array(Hash))
-    content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |hash| "<option value=\"#{hash.first[0]}\">#{hash.first[1]}</option>"}.join("")
-    end
+    select_field(name, collection.map(&.first.to_a), class: name, id: name)
   end
 
   # with collection Array
-  def select_field(name : String | Symbol, collection : Array, **options : Object)
-    content(name: :select, options: options.to_h) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
-    end
+  def select_field(name : String | Symbol, collection : Array | Range, **options : Object)
+    select_field(name, collection.map { |i| [i.to_s, i.to_s.capitalize] }, **options)
   end
 
-  def select_field(name : String | Symbol, collection : Array)
-    content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
-    end
-  end
-
-  # with range Range
-  def select_field(name : String | Symbol, range : Range, **options : Object)
-    collection = range.to_a
-
-    content(name: :select, options: options.to_h) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
-    end
-  end
-
-  def select_field(name : String | Symbol, range : Range)
-    collection = range.to_a
-
-    content(name: :select, options: {:name => name, :id => name}) do
-      collection.map{ |item| "<option>#{item}</option>"}.join("")
-    end
+  def select_field(name : String | Symbol, collection : Array | Range)
+    select_field(name, collection.map { |i| [i.to_s, i.to_s.capitalize] }, class: name, id: name)
   end
 
   # text_area
@@ -130,13 +113,13 @@ module Jasper::Helpers::Forms
 
     options_hash.merge!({:name => name, :id => name})
 
-    content(name: :textarea, options: options_hash) do
+    content(element_name: :textarea, options: options_hash) do
       content
     end
   end
 
   def text_area(name : String | Symbol, content : String)
-    content(name: :textarea, options: {:name => name, :id => name}) do
+    content(element_name: :textarea, options: {:name => name, :id => name}) do
       content
     end
   end
@@ -157,7 +140,7 @@ module Jasper::Helpers::Forms
   end
 
   def submit(value = "Save changes")
-    options = { :value => value.to_s.capitalize }
+    options = {:value => value.to_s.capitalize}
 
     input_field(type: :submit, options: options)
   end
@@ -177,5 +160,4 @@ module Jasper::Helpers::Forms
 
     input_field(type: :checkbox, options: options)
   end
-
 end
