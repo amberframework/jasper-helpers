@@ -47,19 +47,19 @@ describe Jasper::Helpers::Forms do
 
   describe "#select_field" do
     it "creates a select_field with two dimension arrays" do
-      select_field(:age, [[1, "A"], [2, "B"]]).should eq("<select name=\"age\" id=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
+      select_field(:age, [[1, "A"], [2, "B"]]).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
     end
 
     it "creates a select_field with array of hashes" do
-      select_field(:age, [{:"1" => "A"}, {:"2" => "B"}]).should eq("<select name=\"age\" id=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
+      select_field(:age, [{:"1" => "A"}, {:"2" => "B"}]).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
     end
 
     it "creates a select_field with single dimension array" do
-      select_field(:age, ["A", "B"]).should eq("<select name=\"age\" id=\"age\"><option>A</option><option>B</option></select>")
+      select_field(:age, ["A", "B"]).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"A\">A</option><option value=\"B\">B</option></select>")
     end
 
     it "creates a select_field with range" do
-      select_field(:age, range: 1..5).should eq("<select name=\"age\" id=\"age\"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>")
+      select_field(:age, collection: 1..5).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option></select>")
     end
   end
 
