@@ -10,24 +10,12 @@ module Jasper::Helpers::Forms
     input_field(type: :text, options: {:name => name, :id => name})
   end
 
-  # label
-  def label(**options : Object)
-    options = options.to_h
-
-    name = options[:name]
-    content = options[:content]
-
-    content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"}.merge(options))
+  def label(name : String | Symbol, content : String? = nil, **options : Object)
+    content(name: :label, content: (content ? content : name.to_s.capitalize), options: {:for => name, :id => "#{name}_label"}.merge(options.to_h))
   end
 
-  def label(name : String | Symbol, content : String, **options : Object)
-    options = options.to_h
-
-    content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"}.merge(options))
-  end
-
-  def label(name : String | Symbol, content : String)
-    content(name: :label, content: content, options: {:for => name, :id => "#{name}_label"})
+  def label(name : String | Symbol, content : String? = nil)
+    label(name, content: (content ? content : name.to_s.capitalize), for: name, id: "#{name}_label")
   end
 
   # form
@@ -38,16 +26,8 @@ module Jasper::Helpers::Forms
   end
 
   # hidden_field
-  def hidden_field(**options : Object)
-    options = options.to_h
-
-    input_field(type: :hidden, options: options)
-  end
-
   def hidden_field(name : String | Symbol, **options : Object)
-    options = options.to_h
-
-    input_field(type: :text, options: {:name => name, :id => name}.merge(options))
+    input_field(type: :hidden, options: {:name => name, :id => name}.merge(options.to_h))
   end
 
   def hidden_field(name : String | Symbol)
