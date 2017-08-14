@@ -1,14 +1,8 @@
 module Jasper::Helpers::Forms
 
   # text_field
-  def text_field(**options : Object)
-    options = options.to_h
-    input_field(type: :text, options: options)
-  end
-
   def text_field(name : String | Symbol, **options : Object)
     options = options.to_h
-
     input_field(type: :text, options: {:name => name, :id => name}.merge(options))
   end
 

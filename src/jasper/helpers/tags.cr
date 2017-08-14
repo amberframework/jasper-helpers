@@ -1,5 +1,4 @@
 module Jasper::Helpers::Tags
-
   INPUT_BOOLEAN_ATTRIBUTES = [:disabled]
 
   def input_field(type : Symbol, **options)
@@ -13,7 +12,6 @@ module Jasper::Helpers::Tags
 
   def input_field_string(type : Symbol, options : Hash(Symbol, String | Bool | Symbol | Int32))
     tag_options = prepare_input_field_options(options: options)
-
     "<input type=\"#{type}\" #{tag_options}/>"
   end
 
@@ -21,17 +19,14 @@ module Jasper::Helpers::Tags
   def prepare_input_field_options(options : Hash(Symbol, String | Bool | Symbol | Int32))
     # set id and name to name if specified and no id provided
     options[:id] = options[:name] if (options[:name]?) && !(options[:id]?)
-
     boolean_options = options.select(INPUT_BOOLEAN_ATTRIBUTES)
-
     tag_options = options.reject!(INPUT_BOOLEAN_ATTRIBUTES).map { |k, v| "#{k}=\"#{v}\"" }
     tag_options = tag_options << boolean_options.keys.join(" ") if !boolean_options.empty?
     tag_options = tag_options.join(" ")
-
     tag_options
   end
 
-  def content(name : Symbol, content : String, options : Hash(Symbol, String | Bool | Symbol | Int32) )
+  def content(name : Symbol, content : String, options : Hash(Symbol, String | Bool | Symbol | Int32))
     content(name: name, options: options) do
       content
     end
@@ -40,8 +35,6 @@ module Jasper::Helpers::Tags
   def content(name : Symbol, options : Hash(Symbol, String | Bool | Symbol | Int32), &block)
     options = options.map { |k, v| "#{k}=\"#{v}\"" }.join(" ")
     options = " #{options}" if !options.blank?
-
     "<#{name}#{options}>#{yield}</#{name}>"
   end
-
 end
