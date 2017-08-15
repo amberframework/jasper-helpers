@@ -26,15 +26,15 @@ module Jasper::Helpers::Tags
     tag_options
   end
 
-  def content(name : Symbol, content : String, options : Hash(Symbol, String | Bool | Symbol | Int32))
-    content(name: name, options: options) do
+  def content(element_name : Symbol, content : String, options : Hash(Symbol, String | Bool | Symbol | Int32))
+    content(element_name: element_name, options: options) do
       content
     end
   end
 
-  def content(name : Symbol, options : Hash(Symbol, String | Bool | Symbol | Int32), &block)
+  def content(element_name : Symbol, options : Hash(Symbol, String | Bool | Symbol | Int32), &block)
     options = options.map { |k, v| "#{k}=\"#{v}\"" }.join(" ")
     options = " #{options}" if !options.blank?
-    "<#{name}#{options}>#{yield}</#{name}>"
+    "<#{element_name}#{options}>#{yield}</#{element_name}>"
   end
 end

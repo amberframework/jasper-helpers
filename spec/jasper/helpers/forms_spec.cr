@@ -35,7 +35,7 @@ describe Jasper::Helpers::Forms do
         text_field(:name)
       end
 
-      result.should eq("<form id=\"myForm\"><input type=\"text\" name=\"name\" id=\"name\"/></form>")
+      result.should eq("<form id=\"myForm\" method=\"post\"><input type=\"text\" name=\"name\" id=\"name\"/></form>")
     end
   end
 
@@ -47,19 +47,19 @@ describe Jasper::Helpers::Forms do
 
   describe "#select_field" do
     it "creates a select_field with two dimension arrays" do
-      select_field(:age, [[1, "A"],[2, "B"]]).should eq("<select name=\"age\" id=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
+      select_field(:age, [[1, "A"], [2, "B"]]).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
     end
 
     it "creates a select_field with array of hashes" do
-      select_field(:age, [ {:"1" => "A"}, {:"2" => "B"}] ).should eq("<select name=\"age\" id=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
+      select_field(:age, [{:"1" => "A"}, {:"2" => "B"}]).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"1\">A</option><option value=\"2\">B</option></select>")
     end
 
     it "creates a select_field with single dimension array" do
-      select_field(:age, ["A", "B"]).should eq("<select name=\"age\" id=\"age\"><option>A</option><option>B</option></select>")
+      select_field(:age, ["A", "B"]).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"A\">A</option><option value=\"B\">B</option></select>")
     end
 
     it "creates a select_field with range" do
-      select_field(:age, range: 1..5).should eq("<select name=\"age\" id=\"age\"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>")
+      select_field(:age, collection: 1..5).should eq("<select class=\"age\" id=\"age\" name=\"age\"><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option></select>")
     end
   end
 
@@ -69,11 +69,11 @@ describe Jasper::Helpers::Forms do
     end
 
     it "allows for rows and cols to be specified" do
-      text_area(:description, "My Great Textarea", cols: 5, rows: 10).should eq("<textarea cols=\"5\" rows=\"10\" name=\"description\" id=\"description\">My Great Textarea</textarea>")
+      text_area(:description, "My Great Textarea", cols: 5, rows: 10).should eq("<textarea name=\"description\" id=\"description\" cols=\"5\" rows=\"10\">My Great Textarea</textarea>")
     end
 
     it "allows for size to be specified" do
-      text_area(:description, "My Great Textarea", size: "5x10").should eq("<textarea cols=\"5\" rows=\"10\" name=\"description\" id=\"description\">My Great Textarea</textarea>")
+      text_area(:description, "My Great Textarea", size: "5x10").should eq("<textarea name=\"description\" id=\"description\" cols=\"5\" rows=\"10\">My Great Textarea</textarea>")
     end
   end
 
@@ -87,14 +87,13 @@ describe Jasper::Helpers::Forms do
     end
 
     it "creates a submit with value and id parameters" do
-      submit(:create, id: "my-submit-tag").should eq("<input type=\"submit\" id=\"my-submit-tag\" value=\"Create\"/>")
+      submit(:create, id: "my-submit-tag").should eq("<input type=\"submit\" value=\"Create\" id=\"my-submit-tag\"/>")
     end
   end
 
   describe "#check_box" do
     it "creates a check_box with only value" do
-      check_box(:allowed, value: "yes").should eq( "<input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\" checked=\"false\"/>")
+      check_box(:allowed, checked_value: "yes", unchecked_value: "no").should eq("<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"no\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\"/>")
     end
   end
-
 end
