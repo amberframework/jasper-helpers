@@ -17,7 +17,6 @@ module Jasper::Helpers::Tags
 
   # helper for input field options
   def prepare_input_field_options(options : Hash(Symbol, String | Bool | Symbol | Int32))
-    # set id and name to name if specified and no id provided
     options[:id] = options[:name] if (options[:name]?) && !(options[:id]?)
     boolean_options = options.select(INPUT_BOOLEAN_ATTRIBUTES)
     tag_options = options.reject!(INPUT_BOOLEAN_ATTRIBUTES).map { |k, v| "#{k}=\"#{v}\"" }
