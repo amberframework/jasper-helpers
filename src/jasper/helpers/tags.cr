@@ -34,7 +34,7 @@ module Jasper::Helpers::Tags
 
   def content(element_name : Symbol, options : Hash(Symbol, String | Bool | Symbol | Int32), &block)
     options = options.map { |k, v| "#{k}=\"#{v}\"" }.join(" ")
-    options = " #{options}" if !options.blank?
+    options = " #{options}" unless options.blank?
     "<#{element_name}#{options}>#{yield}</#{element_name}>"
   end
 end
