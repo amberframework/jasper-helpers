@@ -95,5 +95,9 @@ describe Jasper::Helpers::Forms do
     it "creates a check_box with only value" do
       check_box(:allowed, checked_value: "yes", unchecked_value: "no").should eq("<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"no\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\"/>")
     end
+
+    it "marks box as checked" do
+      check_box(:allowed, checked_value: "yes", unchecked_value: "no", checked: true).should eq("<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"no\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\" checked=\"checked\"/>")
+    end
   end
 end

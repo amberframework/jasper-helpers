@@ -105,10 +105,14 @@ module Jasper::Helpers::Forms
 
   # check_box
   def check_box(name : String | Symbol, checked_value = "1", unchecked_value = "0", **options : Object)
-    options_hash = Hash(Symbol, String | Symbol).new.merge({:name => name, :id => name, :value => checked_value})
+    options_hash = Hash(Symbol, String | Symbol | Bool).new.merge({:name => name, :id => name, :value => checked_value})
+    options_hash.merge!(options.to_h)
+    # Allows you to pass in checked=true/false
+    options_hash[:checked] = "checked" if options_hash[:checked]?
+
     String.build do |str|
       str << hidden_field(name, value: unchecked_value)
-      str << input_field(type: :checkbox, options: options_hash.merge(options.to_h))
+      str << input_field(type: :checkbox, options: options_hash)
     end
   end
 
