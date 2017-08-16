@@ -33,8 +33,12 @@ module Jasper::Helpers::Tags
   end
 
   def content(element_name : Symbol, options : Hash(Symbol, String | Bool | Symbol | Int32), &block)
-    options = options.map { |k, v| "#{k}=\"#{v}\"" }.join(" ")
-    options = " #{options}" if !options.blank?
-    "<#{element_name}#{options}>#{yield}</#{element_name}>"
+    String.build do |str|
+      str << "<#{element_name}"
+      options.each do |k, v| 
+        str << %( #{k}="#{v}")
+      end
+      str << ">#{yield}</#{element_name}>"
+    end
   end
 end
