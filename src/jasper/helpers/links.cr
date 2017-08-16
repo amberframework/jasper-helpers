@@ -13,6 +13,7 @@ module Jasper::Helpers::Links
 
   def link_to(url : String, **options : Object, &block)
     link_to(yield, url, **options)
+
   end
 
   def button_to(body : String, url : String, method = :post, **options : Object)
