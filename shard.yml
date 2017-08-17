@@ -2,12 +2,9 @@ name: jasper_helpers
 version: 0.1.0
 
 authors:
+  - Dru Jensen  <drujensen@gmail.com>
   - Isaac Sloan <isaac@isaacsloan.com>
 
-targets:
-  form_helpers:
-    main: src/form_helpers.cr
-
-crystal: 0.22.0
+crystal: 0.23.1
 
 license: MIT
