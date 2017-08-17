@@ -1,46 +1,42 @@
 module JasperHelpers::Forms
   # text_field
   def text_field(name : String | Symbol, **options : Object)
-    options = options.to_h
-    input_field(type: :text, options: {:name => name, :id => name}.merge(options))
+    options_hash = Kit.safe_hash({:name => name, :id => name}, options)
+    input_field(type: :text, options: options_hash)
   end
 
   def text_field(name : String | Symbol)
-    input_field(type: :text, options: {:name => name, :id => name})
+    text_field(name, id: name)
   end
 
   def label(name : String | Symbol, content : String? = nil, **options : Object)
-    content(element_name: :label, content: (content ? content : name.to_s.capitalize), options: {:for => name, :id => "#{name}_label"}.merge(options.to_h))
+    options_hash = Kit.safe_hash({for: name, id: "#{Kit.css_safe(name)}_label"}, options)
+    content(element_name: :label, content: (content ? content : name.to_s.capitalize), options: options_hash)
   end
 
   def label(name : String | Symbol, content : String? = nil)
-    label(name, content: (content ? content : name.to_s.capitalize), for: name, id: "#{name}_label")
+    label(name, content: (content ? content : name.to_s.capitalize), for: name, id: "#{Kit.css_safe(name)}_label")
   end
-
-  # def csrf_field
-  #   hidden_field(name: "authenticity_token", value: "")
-  # end
 
   # form
   def form(method = :post, **options : Object, &block)
-    options_hash = options.to_h.merge({:method => (method == :get ? :get : :post)})
+    options_hash = Kit.safe_hash(options, {:method => (method == :get ? :get : :post)})
     content(element_name: :form, options: options_hash) do
       String.build do |str|
-        # TODO also skip if get
-        str << hidden_field(name: "_method", value: method) if method != :post
-        # str << csrf_field
+        str << hidden_field(name: "_method", value: method) unless [:get, :post].includes?(method)
         str << yield
       end
     end
   end
-  
+
   def form(method = :post, &block)
     form(:post, class: "amber_form", &block)
   end
 
   # hidden_field
   def hidden_field(name : String | Symbol, **options : Object)
-    input_field(type: :hidden, options: {:name => name, :id => name}.merge(options.to_h))
+    options_hash = Kit.safe_hash({:name => name, :id => name}, options)
+    input_field(type: :hidden, options: options_hash)
   end
 
   def hidden_field(name : String | Symbol)
@@ -50,8 +46,14 @@ module JasperHelpers::Forms
   # select_field
   # with collection Array(Array)
   def select_field(name : String | Symbol, collection : Array(Array), **options : Object)
-    content(element_name: :select, options: options.to_h.merge({:name => name})) do
-      collection.map { |item| "<option value=\"#{item[0]}\">#{item[1]}</option>" }.join("")
+    options_hash = Kit.safe_hash(options, {:name => name})
+    selected = options_hash.delete(:selected).to_s
+    content(element_name: :select, options: options_hash) do
+      String.build do |str|
+        collection.map do |item| 
+          str << %(<option value="#{item[0]}"#{selected == item[0].to_s ? %( selected="selected") : nil}>#{item[1]}</option>)
+        end
+      end
     end
   end
 
@@ -71,11 +73,19 @@ module JasperHelpers::Forms
 
   # with collection Hash
   def select_field(name : String | Symbol, collection : Hash, **options : Object)
-    select_field(name, collection.map{|k, v| [k, v]}, **options)
+    select_field(name, collection.map { |k, v| [k, v] }, **options)
   end
 
   def select_field(name : String | Symbol, collection : Hash)
-    select_field(name, collection.map{|k, v| [k, v]}, class: name, id: name)
+    select_field(name, collection.map { |k, v| [k, v] }, class: name, id: name)
+  end
+
+  def select_field(name : String | Symbol, collection : NamedTuple, **options : Object)
+    select_field(name, collection.map { |k, v| [k, v] }, **options)
+  end
+
+  def select_field(name : String | Symbol, collection : NamedTuple)
+    select_field(name, collection.map { |k, v| [k, v] }, class: name, id: name)
   end
 
   # with collection Array
@@ -88,36 +98,35 @@ module JasperHelpers::Forms
   end
 
   # text_area
-  def text_area(name : String | Symbol, content : String, **options : Object)
-    options_hash = Hash(Symbol, String | Symbol).new.merge(options.to_h)
+  def text_area(name : String | Symbol, content : String?, **options : Object)
+    options_hash = Kit.safe_hash({:name => name, :id => name}, options)
     options_hash[:cols], options_hash[:rows] = options_hash.delete(:size).to_s.split("x") if options.has_key?(:size)
-    content(element_name: :textarea, options: {:name => name, :id => name}.merge(options_hash)) do
+    content(element_name: :textarea, options: options_hash) do
       content
     end
   end
 
-  def text_area(name : String | Symbol, content : String)
+  def text_area(name : String | Symbol, content : String?)
     text_area(name, content, id: name)
   end
 
   # submit
   def submit(value : String | Symbol = "Save Changes", **options : Object)
-    options_hash = Hash(Symbol, String | Symbol).new.merge({:value => value})
-    input_field(type: :submit, options: options_hash.merge(options.to_h))
+    options_hash = Kit.safe_hash({value: value}, options)
+    input_field(type: :submit, options: options_hash)
   end
 
   def submit(value : String | Symbol = "Save Changes")
-    submit(value: value.to_s, id: value.to_s.gsub(/\W/, "_").downcase)
+    submit(value: value.to_s, id: value)
   end
 
   # check_box
   def check_box(name : String | Symbol, checked_value = "1", unchecked_value = "0", **options : Object)
-    options_hash = Hash(Symbol, String | Symbol | Bool).new.merge({:name => name, :id => name, :value => checked_value})
-    options_hash.merge!(options.to_h)
+    options_hash = Kit.safe_hash({:name => name, :id => name, :value => checked_value}, options)
     # Allows you to pass in checked=true/false
     options_hash[:checked] = "checked" if options_hash[:checked]?
 
-    String.build do |str|
+      String.build do |str|
       str << hidden_field(name, value: unchecked_value)
       str << input_field(type: :checkbox, options: options_hash)
     end
