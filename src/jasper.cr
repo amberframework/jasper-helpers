@@ -1,5 +1,7 @@
 require "./jasper/*"
 
 module Jasper
-  # TODO Put your code here
+  include Jasper::Helpers::Tags
+  include Jasper::Helpers::Forms
+  include Jasper::Helpers::Links
 end
