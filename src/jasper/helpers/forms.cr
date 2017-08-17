@@ -26,6 +26,7 @@ module Jasper::Helpers::Forms
     options_hash = options.to_h.merge({:method => (method == :get ? :get : :post)})
     content(element_name: :form, options: options_hash) do
       String.build do |str|
+        # TODO also skip if get
         str << hidden_field(name: "_method", value: method) if method != :post
         # str << csrf_field
         str << yield
@@ -68,6 +69,15 @@ module Jasper::Helpers::Forms
     select_field(name, collection.map(&.first.to_a), class: name, id: name)
   end
 
+  # with collection Hash
+  def select_field(name : String | Symbol, collection : Hash, **options : Object)
+    select_field(name, collection.map{|k, v| [k, v]}, **options)
+  end
+
+  def select_field(name : String | Symbol, collection : Hash)
+    select_field(name, collection.map{|k, v| [k, v]}, class: name, id: name)
+  end
+
   # with collection Array
   def select_field(name : String | Symbol, collection : Array | Range, **options : Object)
     select_field(name, collection.map { |i| [i.to_s, i.to_s.capitalize] }, **options)
@@ -91,16 +101,13 @@ module Jasper::Helpers::Forms
   end
 
   # submit
-  def submit(**options : Object)
-    input_field(type: :submit, options: options.to_h)
+  def submit(value : String | Symbol = "Save Changes", **options : Object)
+    options_hash = Hash(Symbol, String | Symbol).new.merge({:value => value})
+    input_field(type: :submit, options: options_hash.merge(options.to_h))
   end
 
-  def submit(value : String | Symbol, **options : Object)
-    input_field(type: :submit, options: {:value => value.to_s.capitalize}.merge(options.to_h))
-  end
-
-  def submit(value : String | Symbol = "Save changes")
-    submit(value: value.to_s.capitalize)
+  def submit(value : String | Symbol = "Save Changes")
+    submit(value: value.to_s, id: value.to_s.gsub(/\W/, "_").downcase)
   end
 
   # check_box

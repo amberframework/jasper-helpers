@@ -79,15 +79,19 @@ describe Jasper::Helpers::Forms do
 
   describe "#submit" do
     it "creates a submit with no parameters" do
-      submit.should eq("<input type=\"submit\" value=\"Save changes\"/>")
+      submit.should eq("<input type=\"submit\" value=\"Save Changes\" id=\"save_changes\"/>")
+    end
+
+    it "creates a submit with no parameters except id" do
+      submit(id: :submit_button).should eq("<input type=\"submit\" value=\"Save Changes\" id=\"submit_button\"/>")
     end
 
     it "creates a submit with value parameter" do
-      submit(:create).should eq("<input type=\"submit\" value=\"Create\"/>")
+      submit(:create).should eq("<input type=\"submit\" value=\"create\" id=\"create\"/>")
     end
 
     it "creates a submit with value and id parameters" do
-      submit(:create, id: "my-submit-tag").should eq("<input type=\"submit\" value=\"Create\" id=\"my-submit-tag\"/>")
+      submit(:create, id: "my-submit-tag").should eq("<input type=\"submit\" value=\"create\" id=\"my-submit-tag\"/>")
     end
   end
 
