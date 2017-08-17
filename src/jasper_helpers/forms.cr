@@ -1,4 +1,4 @@
-module Jasper::Helpers::Forms
+module JasperHelpers::Forms
   # text_field
   def text_field(name : String | Symbol, **options : Object)
     options = options.to_h

@@ -1,4 +1,4 @@
-module Jasper::Helpers::Tags
+module JasperHelpers::Tags
   INPUT_BOOLEAN_ATTRIBUTES = [:disabled]
 
   def input_field(type : Symbol, **options)

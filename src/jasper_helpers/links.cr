@@ -1,4 +1,4 @@
-module Jasper::Helpers::Links
+module JasperHelpers::Links
   def link_to(body : String, url : String, **options : Object)
     content(element_name: :a, content: body, options: {:href => url}.merge(options.to_h))
   end
