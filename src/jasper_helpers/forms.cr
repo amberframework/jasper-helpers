@@ -117,7 +117,7 @@ module JasperHelpers::Forms
   end
 
   def submit(value : String | Symbol = "Save Changes")
-    submit(value: value.to_s, id: value)
+    submit(value: value.to_s, id: value.to_s.gsub(" ", "_").downcase)
   end
 
   # check_box

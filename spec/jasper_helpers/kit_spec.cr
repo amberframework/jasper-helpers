@@ -18,7 +18,7 @@ describe JasperHelpers::Kit do
     end
 
     it "it merges and sanitizes params" do
-      expected = {:name => "dragon[reborn]", :age => 22, :class => "rand_al_thor", :selected => "sidar"}
+      expected = {:name => "dragon[reborn]", :age => 22, :class => "rand al thor", :selected => "sidar"}
       Kit.safe_hash({:name => "dragon[reborn]", :age => 22}, {class: "rand 'al thor", selected: "sidar"}).should eq(expected)
     end
 

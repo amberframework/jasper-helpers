@@ -2,7 +2,8 @@ module JasperHelpers::Kit
   extend self
 
   def css_safe(value)
-    value.to_s.gsub(/[^\w-]/, " ").strip.gsub(/\s+/, "_").downcase
+    values = value.to_s.strip.split(' ')
+    values.map{|v| v.gsub(/[^\w-]+/, " ").strip.gsub(/\s+/, "_")}.join(' ')
   end
 
   def merge(*options)
@@ -12,11 +13,15 @@ module JasperHelpers::Kit
   end
 
   def sanitize(options : OptionHash)
-    options[:id] = css_safe(options[:id]) if options[:id]?
-    options[:class] = css_safe(options[:class]) if options[:class]?
+    name = options[:name]?.to_s
+    [:id, :class].each do |k|
+      next if (v = options[k]?.to_s).empty?
+      v = v.gsub(" ", "_").downcase if v == name
+      options[k] = css_safe(v)
+    end
     options
   end
-  
+
   def safe_hash(*options)
     sanitize(merge(*options))
   end

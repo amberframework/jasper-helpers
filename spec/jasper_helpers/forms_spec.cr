@@ -35,7 +35,7 @@ describe JasperHelpers::Forms do
       result = form(id: "myForm") do
         text_field(:name)
       end
-      expected = "<form id=\"myform\" method=\"post\"><input type=\"text\" name=\"name\" id=\"name\"/></form>"
+      expected = "<form id=\"myForm\" method=\"post\"><input type=\"text\" name=\"name\" id=\"name\"/></form>"
 
       result.should eq(expected)
     end
