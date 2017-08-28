@@ -50,7 +50,7 @@ module JasperHelpers::Forms
     selected = options_hash.delete(:selected).to_s
     content(element_name: :select, options: options_hash) do
       String.build do |str|
-        collection.map do |item| 
+        collection.map do |item|
           str << %(<option value="#{item[0]}"#{selected == item[0].to_s ? %( selected="selected") : nil}>#{item[1]}</option>)
         end
       end
@@ -126,7 +126,7 @@ module JasperHelpers::Forms
     # Allows you to pass in checked=true/false
     options_hash[:checked] = "checked" if options_hash[:checked]?
 
-      String.build do |str|
+    String.build do |str|
       str << hidden_field(name, value: unchecked_value)
       str << input_field(type: :checkbox, options: options_hash)
     end
