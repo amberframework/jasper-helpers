@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/Amber-Crystal/Jasper-Helpers.svg?branch=master)](https://travis-ci.org/Amber-Crystal/Jasper-Helpers)
+[![Build Status](https://travis-ci.org/amberframework/jasper-helpers.svg?branch=master)](https://travis-ci.org/https://travis-ci.org/amberframework/jasper-helpers)
+
 # Jasper::Helpers
 
 A library of helpers for Amber Framework.
