@@ -2,7 +2,7 @@
 
 # Jasper::Helpers
 
-A library of helpers for Amber Framework.
+A library of helpers for [Amber Framework](https://amberframework.org).
 
 ## Installation
 
