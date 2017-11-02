@@ -25,7 +25,56 @@ describe JasperHelpers::Links do
     end
 
     it "changes the method when provided" do
-      button_to("Save", "/save", :put).should eq("<form action=\"/save\" class=\"button\" method=\"post\"><input type=\"hidden\" name=\"_method\" id=\"_method\" value=\"put\"/><button type=\"submit\">Save</button></form>")
+      button_to("Save", "/save", :put).should eq button_to_no_block
     end
+
+    context "with block" do
+      it "renders form with hidden field" do
+        form = button_to("Save", "/save", :delete) do
+          hidden_field(:_csrf, value: "some value")
+        end
+
+        form.should eq button_to_with_block
+      end
+
+      it "renders form with hidden field" do
+	    form = button_to("Save", "/save", :delete) do
+          	hidden_field(:_csrf, value: "some value") + %(Random text)
+        end
+    
+	    form.should eq button_to_with_block_random_text
+	  end
+	end
+	
   end
+end
+
+def button_to_no_block
+  <<-FORM
+  <form action="save" class="button" method="post">
+  <input type="hidden" name="_method" id="_method" value="put"/>
+  <button type="submit">Save</button>
+  </form>
+  FORM
+end
+
+def button_to_with_block
+  <<-FORM
+  <form action="/save" class="button" method="post">\
+  <input type="hidden" name="_method" id="_method" value="delete"/>\
+  <input type="hidden" name="_csrf" id="_csrf" value="some value"/>\
+  <button type="submit">Save</button>\
+  </form>
+  FORM
+end
+
+def button_to_with_block_random_text
+  <<-FORM
+  <form action="/save" class="button" method="post">\
+  <input type="hidden" name="_method" id="_method" value="delete"/>\
+  <input type="hidden" name="_csrf" id="_csrf" value="some value"/>\
+  Random text\
+  <button type="submit">Save</button>\
+  </form>
+  FORM
 end

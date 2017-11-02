@@ -26,4 +26,14 @@ module JasperHelpers::Links
       content(:button, body, {:type => "submit"})
     end
   end
+
+  def button_to(body : String, url : String, method = :post)
+    button_content = yield
+    form(action: url, class: "button", method: method) do
+	  String.build do |str|
+	    str << button_content
+	    str << content(:button, body, {:type => "submit"})
+	  end
+    end
+  end
 end
