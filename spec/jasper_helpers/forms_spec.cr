@@ -135,5 +135,10 @@ describe JasperHelpers::Forms do
       expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\" checked=\"checked\"/>"
       check_box(:allowed, checked: true).should eq(expected)
     end
+
+    it "marks box as not checked" do
+      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/>"
+      check_box(:allowed, checked: false).should eq(expected)
+    end
   end
 end
