@@ -38,14 +38,13 @@ describe JasperHelpers::Links do
       end
 
       it "renders form with hidden field" do
-	    form = button_to("Save", "/save", :delete) do
-          	hidden_field(:_csrf, value: "some value") + %(Random text)
+        form = button_to("Save", "/save", :delete) do
+          hidden_field(:_csrf, value: "some value") + %(Random text)
         end
-    
-	    form.should eq button_to_with_block_random_text
-	  end
-	end
-	
+
+        form.should eq button_to_with_block_random_text
+      end
+    end
   end
 end
 
