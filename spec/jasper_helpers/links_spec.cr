@@ -50,9 +50,9 @@ end
 
 def button_to_no_block
   <<-FORM
-  <form action="save" class="button" method="post">
-  <input type="hidden" name="_method" id="_method" value="put"/>
-  <button type="submit">Save</button>
+  <form action="save" class="button" method="post">\
+  <input type="hidden" name="_method" id="_method" value="put"/>\
+  <button type="submit">Save</button>\
   </form>
   FORM
 end
