@@ -124,7 +124,11 @@ module JasperHelpers::Forms
   def check_box(name : String | Symbol, checked_value = "1", unchecked_value = "0", **options : Object)
     options_hash = Kit.safe_hash({:name => name, :id => name, :value => checked_value}, options)
     # Allows you to pass in checked=true/false
-    options_hash[:checked] = "checked" if options_hash[:checked]?
+    if options_hash[:checked]?
+      options_hash[:checked] = "checked"
+    else
+      options_hash.delete(:checked)
+    end
 
     String.build do |str|
       str << hidden_field(name, value: unchecked_value)
