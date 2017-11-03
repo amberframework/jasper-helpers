@@ -3,7 +3,7 @@ module JasperHelpers::Kit
 
   def css_safe(value)
     values = value.to_s.strip.split(' ')
-    values.map{|v| v.gsub(/[^\w-]+/, " ").strip.gsub(/\s+/, "_")}.join(' ')
+    values.map { |v| v.gsub(/[^\w-]+/, " ").strip.gsub(/\s+/, "_") }.join(' ')
   end
 
   def merge(*options)

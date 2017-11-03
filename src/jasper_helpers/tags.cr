@@ -34,7 +34,7 @@ module JasperHelpers::Tags
   def content(element_name : Symbol, options : OptionHash, &block)
     String.build do |str|
       str << "<#{element_name}"
-      options.each do |k, v| 
+      options.each do |k, v|
         next if v.nil?
         str << %( #{k}="#{v}")
       end
