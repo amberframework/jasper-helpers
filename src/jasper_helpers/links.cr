@@ -15,15 +15,27 @@ module JasperHelpers::Links
     link_to(yield, url, **options)
   end
 
-  def button_to(body : String, url : String, method = :post, **options : Object)
-    form(action: url, class: "button", method: method) do
-      content(:button, body, options)
+  def button_to(body : String, url : String, method : Symbol = :post)
+    form(action: url, method: method) do
+      content(:button, body, {:type => "submit"})
     end
   end
 
-  def button_to(body : String, url : String, method = :post)
-    form(action: url, class: "button", method: method) do
-      content(:button, body, {:type => "submit"})
+  def button_to(body : String, url : String, method : Symbol = :post)
+    form(action: url, method: method) do
+      String.build do |str|
+        str << yield
+        str << content(:button, body, {:type => "submit"})
+      end
+    end
+  end
+
+  def button_to(body : String, url : String, method : Symbol = :post, **options : Object)
+    form(action: url, method: method) do
+      String.build do |str|
+        str << yield
+        str << content(:button, body, options.to_h)
+      end
     end
   end
 end
