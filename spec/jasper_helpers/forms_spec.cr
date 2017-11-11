@@ -122,22 +122,22 @@ describe JasperHelpers::Forms do
 
   describe "#check_box" do
     it "creates a check_box with yes/no" do
-      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"no\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\"/>"
+      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"no\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"yes\"/>"
       check_box(:allowed, checked_value: "yes", unchecked_value: "no").should eq(expected)
     end
 
     it "creates a check_box with only value" do
-      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/>"
+      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/>"
       check_box(:allowed).should eq(expected)
     end
 
     it "marks box as checked" do
-      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\" checked=\"checked\"/>"
+      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\" checked=\"checked\"/>"
       check_box(:allowed, checked: true).should eq(expected)
     end
 
     it "marks box as not checked" do
-      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/>"
+      expected = "<input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/>"
       check_box(:allowed, checked: false).should eq(expected)
     end
   end
