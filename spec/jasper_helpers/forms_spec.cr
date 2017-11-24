@@ -11,6 +11,10 @@ describe JasperHelpers::Forms do
       text_field(:name).should eq("<input type=\"text\" name=\"name\" id=\"name\"/>")
     end
 
+    it "input type with symbol works" do
+      text_field(:name, type: :password).should eq("<input type=\"password\" name=\"name\" id=\"name\"/>")
+    end
+
     it "style value works" do
       text_field(:name, style: "color: white;").should eq("<input type=\"text\" name=\"name\" id=\"name\" style=\"color: white;\"/>")
     end
