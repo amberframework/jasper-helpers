@@ -2,7 +2,8 @@ module JasperHelpers::Forms
   # text_field
   def text_field(name : String | Symbol, **options : Object)
     options_hash = Kit.safe_hash({:name => name, :id => name}, options)
-    input_field(type: :text, options: options_hash)
+    type = options[:type]? || :text
+    input_field(type: type, options: options_hash.reject(:type))
   end
 
   def text_field(name : String | Symbol)
