@@ -19,6 +19,11 @@ module JasperHelpers::Forms
     label(name, content: (content ? content : name.to_s.capitalize), for: name, id: "#{Kit.css_safe(name)}_label")
   end
 
+  def label(name : String | Symbol)
+    content = "#{yield} #{name.to_s.capitalize}"
+    label(name, content: content, for: name, id: "#{Kit.css_safe(name)}_label")
+  end
+
   # form
   def form(method = :post, **options : Object, &block)
     options_hash = Kit.safe_hash(options, {:method => (method == :get ? :get : :post)})
