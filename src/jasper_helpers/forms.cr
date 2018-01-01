@@ -20,7 +20,7 @@ module JasperHelpers::Forms
   end
 
   def label(name : String | Symbol)
-    content = "#{yield} #{name.to_s.capitalize}"
+    content = "#{yield}#{name.to_s.capitalize}"
     label(name, content: content, for: name, id: "#{Kit.css_safe(name)}_label")
   end
 

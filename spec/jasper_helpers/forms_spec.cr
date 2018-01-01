@@ -32,6 +32,13 @@ describe JasperHelpers::Forms do
     it "creates with string and options" do
       label(:name, "My Label", class: "label").should eq("<label for=\"name\" id=\"name_label\" class=\"label\">My Label</label>")
     end
+
+    it "creates with content" do
+      expected = "<label for=\"name\" id=\"name_label\"><input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/>Name</label>"
+      label(:name) do
+        check_box(:allowed)
+      end.should eq(expected)
+    end
   end
 
   describe "#form" do
