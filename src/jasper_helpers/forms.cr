@@ -137,8 +137,8 @@ module JasperHelpers::Forms
     end
 
     String.build do |str|
-      str << hidden_field(name, value: unchecked_value, id: "#{options_hash[:id]}_default")
       str << input_field(type: :checkbox, options: options_hash)
+      str << hidden_field(name, value: unchecked_value, id: "#{options_hash[:id]}_default")
     end
   end
 
