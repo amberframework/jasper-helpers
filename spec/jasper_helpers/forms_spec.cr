@@ -20,6 +20,31 @@ describe JasperHelpers::Forms do
     end
   end
 
+  describe "#wrapper_field" do
+    it "creates with nil" do
+      wrapper_field(nil).should eq("")
+    end
+
+    it "creates with string" do
+      wrapper_field("<br>").should eq("<br>")
+    end
+
+    it "creates with element" do
+      expected = "<input type=\"text\" name=\"my-great-text-input\" id=\"my-great-text-input\"/>"
+
+      wrapper_field(text_field("my-great-text-input")).should eq(expected)
+    end
+
+    it "creates with string and element" do
+      expected = "<br><input type=\"text\" name=\"my-great-text-input\" id=\"my-great-text-input\"/>"
+
+      wrapper_field(
+        "<br>",
+        text_field("my-great-text-input")
+      ).should eq(expected)
+    end
+  end
+
   describe "#label" do
     it "creates with string" do
       label("name", "My Label").should eq("<label for=\"name\" id=\"name_label\">My Label</label>")
@@ -34,9 +59,19 @@ describe JasperHelpers::Forms do
     end
 
     it "creates with content" do
-      expected = "<label for=\"name\" id=\"name_label\"><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/><input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/>Name</label>"
+      expected = "<label for=\"name\" id=\"name_label\"><input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/><input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/></label>"
       label(:name) do
         check_box(:allowed)
+      end.should eq(expected)
+    end
+
+    it "creates with wrapper_field" do
+      expected = "<label for=\"name\" id=\"name_label\">name<input type=\"checkbox\" name=\"allowed\" id=\"allowed\" value=\"1\"/><input type=\"hidden\" name=\"allowed\" id=\"allowed_default\" value=\"0\"/></label>"
+      label(:name) do
+        wrapper_field(
+          "name",
+          check_box(:allowed)
+        )
       end.should eq(expected)
     end
   end

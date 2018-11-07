@@ -20,8 +20,13 @@ module JasperHelpers::Forms
   end
 
   def label(name : String | Symbol)
-    content = "#{yield}#{name.to_s.capitalize}"
+    content = "#{yield}"
     label(name, content: content, for: name, id: "#{Kit.css_safe(name)}_label")
+  end
+
+  def wrapper_field(*args)
+    return "" unless args.first?
+    args.join("")
   end
 
   # form
