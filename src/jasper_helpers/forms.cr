@@ -53,11 +53,11 @@ module JasperHelpers::Forms
   # with collection Array(Array)
   def select_field(name : String | Symbol, collection : Array(Array), **options : Object)
     options_hash = Kit.safe_hash(options, {:name => name})
-    selected = options_hash.delete(:selected).to_s
+    selected = [options_hash.delete(:selected)].flatten.map(&.to_s)
     content(element_name: :select, options: options_hash) do
       String.build do |str|
         collection.map do |item|
-          str << %(<option value="#{item[0]}"#{selected == item[0].to_s ? %( selected="selected") : nil}>#{item[1]}</option>)
+          str << %(<option value="#{item[0]}"#{selected.includes?(item[0].to_s) ? %( selected="selected") : nil}>#{item[1]}</option>)
         end
       end
     end
