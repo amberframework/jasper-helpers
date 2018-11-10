@@ -120,14 +120,29 @@ describe JasperHelpers::Forms do
       select_field(:age, {"1": "A", "2": "B"}, id: "age_of_thing").should eq(expected)
     end
 
-    it "creates a select_field with B selected" do
+    it "creates a select_field with B selected (String scalar)" do
       expected = "<select name=\"age\"><option value=\"1\">A</option><option value=\"2\" selected=\"selected\">B</option></select>"
       select_field(:age, {"1": "A", "2": "B"}, selected: "2").should eq(expected)
     end
 
-    it "creates a select_field with B and C selected" do
+    it "creates a select_field with B selected (Int32 scalar)" do
+      expected = "<select name=\"age\"><option value=\"1\">A</option><option value=\"2\" selected=\"selected\">B</option></select>"
+      select_field(:age, {"1": "A", "2": "B"}, selected: 2).should eq(expected)
+    end
+
+    it "creates a select_field with B and C selected (String array)" do
       expected = "<select name=\"age\"><option value=\"1\">A</option><option value=\"2\" selected=\"selected\">B</option><option value=\"3\" selected=\"selected\">C</option></select>"
       select_field(:age, {"1": "A", "2": "B", "3": "C"}, selected: ["2", "3"]).should eq(expected)
+    end
+
+    it "creates a select_field with B and C selected (Int32 array)" do
+      expected = "<select name=\"age\"><option value=\"1\">A</option><option value=\"2\" selected=\"selected\">B</option><option value=\"3\" selected=\"selected\">C</option></select>"
+      select_field(:age, {"1": "A", "2": "B", "3": "C"}, selected: [2, 3]).should eq(expected)
+    end
+
+    it "creates a select_field with B and C selected (Int32 | String array)" do
+      expected = "<select name=\"age\"><option value=\"1\">A</option><option value=\"2\" selected=\"selected\">B</option><option value=\"3\" selected=\"selected\">C</option></select>"
+      select_field(:age, {"1": "A", "2": "B", "3": "C"}, selected: [2, "3"]).should eq(expected)
     end
 
     it "creates a select_field with single dimension array" do
