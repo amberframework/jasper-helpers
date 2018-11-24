@@ -20,6 +20,21 @@ describe JasperHelpers::Forms do
     end
   end
 
+  describe "#file_field" do
+    it "main param works with string" do
+      expected = "<input type=\"file\" name=\"my-great-file-input\" id=\"my-great-file-input\"/>"
+      file_field("my-great-file-input").should eq(expected)
+    end
+
+    it "main param works with symbol" do
+      file_field(:name).should eq("<input type=\"file\" name=\"name\" id=\"name\"/>")
+    end
+
+    it "style value works" do
+      file_field(:name, style: "color: white;").should eq("<input type=\"file\" name=\"name\" id=\"name\" style=\"color: white;\"/>")
+    end
+  end
+
   describe "#wrapper_field" do
     it "creates with nil" do
       wrapper_field(nil).should eq("")

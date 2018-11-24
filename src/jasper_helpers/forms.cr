@@ -10,6 +10,17 @@ module JasperHelpers::Forms
     text_field(name, id: name)
   end
 
+  # file_field
+  def file_field(name : String | Symbol, **options : Object)
+    options_hash = Kit.safe_hash({:name => name, :id => name}, options)
+    type = options[:type]? || :file
+    input_field(type: type, options: options_hash.reject(:type))
+  end
+
+  def file_field(name : String | Symbol)
+    file_field(name, id: name)
+  end
+
   def label(name : String | Symbol, content : String? = nil, **options : Object)
     options_hash = Kit.safe_hash({for: name, id: "#{Kit.css_safe(name)}_label"}, options)
     content(element_name: :label, content: (content ? content : name.to_s.capitalize), options: options_hash)
