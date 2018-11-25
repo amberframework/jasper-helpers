@@ -100,6 +100,15 @@ describe JasperHelpers::Forms do
 
       result.should eq(expected)
     end
+
+    it "sets up form for multipart" do
+      result = form(method: :post, action: "/test/1", id: "myForm", multipart: true) do
+        text_field(:name)
+      end
+      expected = %(<form action="/test/1" id="myForm" multipart="true" method="post" enctype="multipart/form-data"><input type="text" name="name" id="name"/></form>)
+
+      result.should eq(expected)
+    end
   end
 
   describe "#hidden_field" do

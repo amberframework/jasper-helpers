@@ -43,6 +43,7 @@ module JasperHelpers::Forms
   # form
   def form(method = :post, **options : Object, &block)
     options_hash = Kit.safe_hash(options, {:method => (method == :get ? :get : :post)})
+    options_hash[:enctype] = "multipart/form-data" if options_hash[:multipart]? == true
     content(element_name: :form, options: options_hash) do
       String.build do |str|
         str << hidden_field(name: "_method", value: method) unless [:get, :post].includes?(method)
