@@ -17,7 +17,7 @@ module JasperHelpers::Links
 
   def button_to(body : String, url : String, method : Symbol = :post)
     form(action: url, method: method) do
-      content(:button, body, {:type => "submit"})
+      content(element_name: :button, content: body, options: {:type => "submit"})
     end
   end
 
@@ -25,16 +25,22 @@ module JasperHelpers::Links
     form(action: url, method: method) do
       String.build do |str|
         str << yield
-        str << content(:button, body, {:type => "submit"})
+        str << content(element_name: :button, content: body, options: {:type => "submit"})
       end
     end
   end
 
   def button_to(body : String, url : String, method : Symbol = :post, **options : Object)
     form(action: url, method: method) do
+      content(element_name: :button, content: body, options: options.to_h)
+    end
+  end
+
+  def button_to(body : String, url : String, method : Symbol = :post, **options : Object, &block)
+    form(action: url, method: method) do
       String.build do |str|
         str << yield
-        str << content(:button, body, options.to_h)
+        str << content(element_name: :button, content: body, options: options.to_h)
       end
     end
   end
