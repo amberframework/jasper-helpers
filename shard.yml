@@ -5,6 +5,10 @@ authors:
   - Dru Jensen  <drujensen@gmail.com>
   - Isaac Sloan <isaac@isaacsloan.com>
 
+dependencies:
+  markd:
+    github: icyleaf/markd
+
 crystal: 0.24.1
 
 license: MIT
