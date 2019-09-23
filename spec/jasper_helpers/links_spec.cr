@@ -1,4 +1,4 @@
-require "../../spec_helper"
+require "../spec_helper"
 
 describe JasperHelpers::Links do
   describe "#link_to" do

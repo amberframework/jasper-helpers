@@ -1,4 +1,4 @@
-require "../../spec_helper"
+require "../spec_helper"
 
 describe JasperHelpers::Kit do
   describe "#css_safe" do
