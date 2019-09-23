@@ -1,4 +1,4 @@
-require "../../spec_helper"
+require "../spec_helper"
 
 describe JasperHelpers::Forms do
   describe "#text_field" do

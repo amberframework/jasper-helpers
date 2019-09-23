@@ -1,4 +1,4 @@
-require "../../spec_helper"
+require "../spec_helper"
 
 describe JasperHelpers::Text do
   describe "#render_markdown" do

@@ -1,4 +1,4 @@
-require "../../spec_helper"
+require "../spec_helper"
 
 describe JasperHelpers::Tags do
   describe "#input_field" do
