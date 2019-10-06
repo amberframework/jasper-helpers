@@ -1,5 +1,5 @@
 name: jasper_helpers
-version: 0.2.5
+version: 0.3.0
 
 authors:
   - Dru Jensen  <drujensen@gmail.com>
@@ -8,7 +8,8 @@ authors:
 dependencies:
   markd:
     github: icyleaf/markd
+    commit: 20962e6cfb4513eb94e6549fd8b735b15d10c6d1
 
-crystal: 0.24.1
+crystal: 0.31.1
 
 license: MIT
