@@ -31,6 +31,17 @@ module JasperHelpers::Tags
     end
   end
 
+	# Builds an arbitrary HTML tag for the provided `element_name` using `options` to configure additional parameters for accordingly.
+	# 
+	# Example
+	# ```
+	#   content(:a, { aria_data_toggle: true, href: "http://example.com" })
+	# ```
+	#
+	# Produces: 
+	# ```text
+	#  <a href="http://example.com", aria_data_toggle="true" />
+	# ```
   def content(element_name : Symbol, options : OptionHash, &block)
     String.build do |str|
       str << "<#{element_name}"

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.36.1">
+<meta name="crystal_docs.project_version" content="rs/docs">
+<meta name="crystal_docs.project_name" content="jasper_helpers">
+
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="jasper_helpers">
+  <title>JasperHelpers::Forms - jasper_helpers rs/docs</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          jasper_helpers
+        </a>
+      </h1>
+
+      <span class="project-version">
+        rs/docs
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="jasper_helpers/JasperHelpers" data-name="jasperhelpers">
+      <a href="../JasperHelpers.html">JasperHelpers</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="jasper_helpers/JasperHelpers/Forms" data-name="jasperhelpers::forms">
+      <a href="../JasperHelpers/Forms.html">Forms</a>
+      
+    </li>
+  
+  <li class=" " data-id="jasper_helpers/JasperHelpers/Kit" data-name="jasperhelpers::kit">
+      <a href="../JasperHelpers/Kit.html">Kit</a>
+      
+    </li>
+  
+  <li class=" " data-id="jasper_helpers/JasperHelpers/Links" data-name="jasperhelpers::links">
+      <a href="../JasperHelpers/Links.html">Links</a>
+      
+    </li>
+  
+  <li class=" " data-id="jasper_helpers/JasperHelpers/OptionHash" data-name="jasperhelpers::optionhash">
+      <a href="../JasperHelpers/OptionHash.html">OptionHash</a>
+      
+    </li>
+  
+  <li class=" " data-id="jasper_helpers/JasperHelpers/Tags" data-name="jasperhelpers::tags">
+      <a href="../JasperHelpers/Tags.html">Tags</a>
+      
+    </li>
+  
+  <li class=" " data-id="jasper_helpers/JasperHelpers/Text" data-name="jasperhelpers::text">
+      <a href="../JasperHelpers/Text.html">Text</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> JasperHelpers::Forms
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="direct-including-types" class="anchor" href="#direct-including-types">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Direct including types
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../JasperHelpers.html">JasperHelpers</a></li>
+    
+  </ul>
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L1" target="_blank">
+        jasper_helpers/forms.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#check_box(name:String%7CSymbol,checked_value=&quot;1&quot;,unchecked_value=&quot;0&quot;,**options:Object)-instance-method" class="signature"><strong>#check_box</strong>(name : String | Symbol, checked_value = <span class="s">&quot;1&quot;</span>, unchecked_value = <span class="s">&quot;0&quot;</span>, **options : Object)</a>
+        
+          <div class="summary"><p>check_box</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#check_box(name:String%7CSymbol,checked_value=&quot;1&quot;,unchecked_value=&quot;0&quot;)-instance-method" class="signature"><strong>#check_box</strong>(name : String | Symbol, checked_value = <span class="s">&quot;1&quot;</span>, unchecked_value = <span class="s">&quot;0&quot;</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#file_field(name:String%7CSymbol)-instance-method" class="signature"><strong>#file_field</strong>(name : String | Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#file_field(name:String%7CSymbol,**options:Object)-instance-method" class="signature"><strong>#file_field</strong>(name : String | Symbol, **options : Object)</a>
+        
+          <div class="summary"><p>file_field</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#form(method=:post,&block)-instance-method" class="signature"><strong>#form</strong>(method = <span class="n">:post</span>, &block)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#form(method=:post,**options:Object,&)-instance-method" class="signature"><strong>#form</strong>(method = <span class="n">:post</span>, **options : Object, &)</a>
+        
+          <div class="summary"><p>form</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hidden_field(name:String%7CSymbol)-instance-method" class="signature"><strong>#hidden_field</strong>(name : String | Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hidden_field(name:String%7CSymbol,**options:Object)-instance-method" class="signature"><strong>#hidden_field</strong>(name : String | Symbol, **options : Object)</a>
+        
+          <div class="summary"><p>hidden_field</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#label(name:String%7CSymbol,content:String?=nil)-instance-method" class="signature"><strong>#label</strong>(name : String | Symbol, content : String? = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#label(name:String%7CSymbol,content:String?=nil,**options:Object)-instance-method" class="signature"><strong>#label</strong>(name : String | Symbol, content : String? = <span class="n">nil</span>, **options : Object)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#label(name:String%7CSymbol,&)-instance-method" class="signature"><strong>#label</strong>(name : String | Symbol, &)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Array%7CRange,**options:Object)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Array | Range, **options : Object)</a>
+        
+          <div class="summary"><p>with collection Array</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:NamedTuple,**options:Object)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : NamedTuple, **options : Object)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Hash,**options:Object)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Hash, **options : Object)</a>
+        
+          <div class="summary"><p>with collection Hash</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Array(Hash),**options:Object)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Array(Hash), **options : Object)</a>
+        
+          <div class="summary"><p>with collection Array(Hash)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Array(Array),**options:Object)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Array(Array), **options : Object)</a>
+        
+          <div class="summary"><p>select_field with collection Array(Array)</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Array%7CRange)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Array | Range)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:NamedTuple)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : NamedTuple)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Hash)-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Hash)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Array(Hash))-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Array(Hash))</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#select_field(name:String%7CSymbol,collection:Array(Array))-instance-method" class="signature"><strong>#select_field</strong>(name : String | Symbol, collection : Array(Array))</a>
+        
+          <div class="summary"><p>Utilizes method above for when options are not defined and sets class and id.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#submit(value:String%7CSymbol=&quot;SaveChanges&quot;)-instance-method" class="signature"><strong>#submit</strong>(value : String | Symbol = <span class="s">&quot;Save Changes&quot;</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#submit(value:String%7CSymbol=&quot;SaveChanges&quot;,**options:Object)-instance-method" class="signature"><strong>#submit</strong>(value : String | Symbol = <span class="s">&quot;Save Changes&quot;</span>, **options : Object)</a>
+        
+          <div class="summary"><p>submit</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text_area(name:String%7CSymbol,content:String?)-instance-method" class="signature"><strong>#text_area</strong>(name : String | Symbol, content : String?)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text_area(name:String%7CSymbol,content:String?,**options:Object)-instance-method" class="signature"><strong>#text_area</strong>(name : String | Symbol, content : String?, **options : Object)</a>
+        
+          <div class="summary"><p>text_area</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text_field(name:String%7CSymbol,**options:Object)-instance-method" class="signature"><strong>#text_field</strong>(name : String | Symbol, **options : Object)</a>
+        
+          <div class="summary"><p>text_field</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#text_field(name:String%7CSymbol)-instance-method" class="signature"><strong>#text_field</strong>(name : String | Symbol)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#wrapper_field(*args)-instance-method" class="signature"><strong>#wrapper_field</strong>(*args)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="check_box(name:String|Symbol,checked_value=&quot;1&quot;,unchecked_value=&quot;0&quot;,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>check_box</strong>(name : String | Symbol, checked_value = <span class="s">&quot;1&quot;</span>, unchecked_value = <span class="s">&quot;0&quot;</span>, **options : Object)
+
+        <a class="method-permalink" href="#check_box(name:String%7CSymbol,checked_value=&quot;1&quot;,unchecked_value=&quot;0&quot;,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>check_box</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L147" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="check_box(name:String|Symbol,checked_value=&quot;1&quot;,unchecked_value=&quot;0&quot;)-instance-method">
+      <div class="signature">
+        
+        def <strong>check_box</strong>(name : String | Symbol, checked_value = <span class="s">&quot;1&quot;</span>, unchecked_value = <span class="s">&quot;0&quot;</span>)
+
+        <a class="method-permalink" href="#check_box(name:String%7CSymbol,checked_value=&quot;1&quot;,unchecked_value=&quot;0&quot;)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L162" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="file_field(name:String|Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>file_field</strong>(name : String | Symbol)
+
+        <a class="method-permalink" href="#file_field(name:String%7CSymbol)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="file_field(name:String|Symbol,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>file_field</strong>(name : String | Symbol, **options : Object)
+
+        <a class="method-permalink" href="#file_field(name:String%7CSymbol,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>file_field</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="form(method=:post,&block)-instance-method">
+      <div class="signature">
+        
+        def <strong>form</strong>(method = <span class="n">:post</span>, &block)
+
+        <a class="method-permalink" href="#form(method=:post,&block)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="form(method=:post,**options:Object,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>form</strong>(method = <span class="n">:post</span>, **options : Object, &)
+
+        <a class="method-permalink" href="#form(method=:post,**options:Object,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>form</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hidden_field(name:String|Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>hidden_field</strong>(name : String | Symbol)
+
+        <a class="method-permalink" href="#hidden_field(name:String%7CSymbol)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L65" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hidden_field(name:String|Symbol,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>hidden_field</strong>(name : String | Symbol, **options : Object)
+
+        <a class="method-permalink" href="#hidden_field(name:String%7CSymbol,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>hidden_field</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L60" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="label(name:String|Symbol,content:String?=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>label</strong>(name : String | Symbol, content : String? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#label(name:String%7CSymbol,content:String?=nil)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="label(name:String|Symbol,content:String?=nil,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>label</strong>(name : String | Symbol, content : String? = <span class="n">nil</span>, **options : Object)
+
+        <a class="method-permalink" href="#label(name:String%7CSymbol,content:String?=nil,**options:Object)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="label(name:String|Symbol,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>label</strong>(name : String | Symbol, &)
+
+        <a class="method-permalink" href="#label(name:String%7CSymbol,&)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Array|Range,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Array | Range, **options : Object)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Array%7CRange,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>with collection Array</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L115" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:NamedTuple,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : NamedTuple, **options : Object)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:NamedTuple,**options:Object)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L106" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Hash,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Hash, **options : Object)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Hash,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>with collection Hash</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L98" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Array(Hash),**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Array(Hash), **options : Object)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Array(Hash),**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>with collection Array(Hash)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L89" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Array(Array),**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Array(Array), **options : Object)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Array(Array),**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>select_field
+with collection Array(Array)</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L71" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Array|Range)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Array | Range)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Array%7CRange)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L119" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:NamedTuple)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : NamedTuple)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:NamedTuple)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L110" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Hash)-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Hash)
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Hash)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L102" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Array(Hash))-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Array(Hash))
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Array(Hash))-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L93" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="select_field(name:String|Symbol,collection:Array(Array))-instance-method">
+      <div class="signature">
+        
+        def <strong>select_field</strong>(name : String | Symbol, collection : Array(Array))
+
+        <a class="method-permalink" href="#select_field(name:String%7CSymbol,collection:Array(Array))-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Utilizes method above for when options are not defined and sets class and id.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L84" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="submit(value:String|Symbol=&quot;SaveChanges&quot;)-instance-method">
+      <div class="signature">
+        
+        def <strong>submit</strong>(value : String | Symbol = <span class="s">&quot;Save Changes&quot;</span>)
+
+        <a class="method-permalink" href="#submit(value:String%7CSymbol=&quot;SaveChanges&quot;)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L142" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="submit(value:String|Symbol=&quot;SaveChanges&quot;,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>submit</strong>(value : String | Symbol = <span class="s">&quot;Save Changes&quot;</span>, **options : Object)
+
+        <a class="method-permalink" href="#submit(value:String%7CSymbol=&quot;SaveChanges&quot;,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>submit</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L137" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text_area(name:String|Symbol,content:String?)-instance-method">
+      <div class="signature">
+        
+        def <strong>text_area</strong>(name : String | Symbol, content : String?)
+
+        <a class="method-permalink" href="#text_area(name:String%7CSymbol,content:String?)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L132" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text_area(name:String|Symbol,content:String?,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>text_area</strong>(name : String | Symbol, content : String?, **options : Object)
+
+        <a class="method-permalink" href="#text_area(name:String%7CSymbol,content:String?,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>text_area</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L124" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text_field(name:String|Symbol,**options:Object)-instance-method">
+      <div class="signature">
+        
+        def <strong>text_field</strong>(name : String | Symbol, **options : Object)
+
+        <a class="method-permalink" href="#text_field(name:String%7CSymbol,**options:Object)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>text_field</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L3" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="text_field(name:String|Symbol)-instance-method">
+      <div class="signature">
+        
+        def <strong>text_field</strong>(name : String | Symbol)
+
+        <a class="method-permalink" href="#text_field(name:String%7CSymbol)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="wrapper_field(*args)-instance-method">
+      <div class="signature">
+        
+        def <strong>wrapper_field</strong>(*args)
+
+        <a class="method-permalink" href="#wrapper_field(*args)-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/robertsimoes/jasper-helpers/blob/9365823fb7a84548d969b41259932f09c784e75e/src/jasper_helpers/forms.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
